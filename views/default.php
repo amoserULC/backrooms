@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<h1><?php echo _("Hello World")?></h1>
+	<h1><?php echo _("Welcome to the Backrooms.")?></h1>
 	<h2><?php echo $subhead?></h2>
 	<div class = "display full-border">
 		<div class="row">
