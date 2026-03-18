@@ -79,7 +79,7 @@ class Backrooms extends FreePBX_Helpers implements BMO
 	 */
 	public function getActionBar($request)
 	{
-		if ('helloworld' == $request['display']) {
+		if ('backrooms' == $request['display']) {
 			if (!isset($_GET['view'])) {
 				return [];
 			}
@@ -125,7 +125,7 @@ class Backrooms extends FreePBX_Helpers implements BMO
 
 	/**
 	 * Handle Ajax request
-	 * @url ajax.php?module=helloworld&command=getJSON&jdata=grid
+	 * @url ajax.php?module=backrooms&command=getJSON&jdata=grid
 	 *
 	 * @return array
 	 */
@@ -148,7 +148,7 @@ class Backrooms extends FreePBX_Helpers implements BMO
 	 */
 	public function getOne($id)
 	{
-		$sql = "SELECT id,subject,body FROM helloworld WHERE id = :id";
+		$sql = "SELECT id,subject,body FROM backrooms WHERE id = :id";
 		$stmt = $this->Database->prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
@@ -166,7 +166,7 @@ class Backrooms extends FreePBX_Helpers implements BMO
 	public function getList()
 	{
 		$ret = [];
-		$sql = 'SELECT id, subject FROM helloworld';
+		$sql = 'SELECT id, subject FROM backrooms';
 		$data = $this->Database->query($sql)->fetchAll(PDO::FETCH_KEY_PAIR);
 		array_walk($data, function (&$value, $key) {
 			$value = ['id' => $key, 'subject' => $value];
@@ -183,7 +183,7 @@ class Backrooms extends FreePBX_Helpers implements BMO
 	public function addItem($subject, $body)
 	{
 		$sql =
-			'INSERT INTO helloworld (subject, body) VALUES (:subject, :body)';
+			'INSERT INTO backrooms (subject, body) VALUES (:subject, :body)';
 		$stmt = $this->Database->prepare($sql);
 		$stmt->bindParam(':subject', $subject, \PDO::PARAM_STR);
 		$stmt->bindParam(':body', $body, \PDO::PARAM_STR);
@@ -200,7 +200,7 @@ class Backrooms extends FreePBX_Helpers implements BMO
 	public function updateItem($id, $subject, $body)
 	{
 		$sql =
-			'UPDATE helloworld SET subject = :subject, body = :body WHERE id = :id';
+			'UPDATE backrooms SET subject = :subject, body = :body WHERE id = :id';
 		$stmt = $this->Database->prepare($sql);
 		$stmt->bindParam(':subject', $subject, \PDO::PARAM_STR);
 		$stmt->bindParam(':body', $body, \PDO::PARAM_STR);
@@ -215,7 +215,7 @@ class Backrooms extends FreePBX_Helpers implements BMO
 	 */
 	public function deleteItem($id)
 	{
-		$sql = 'DELETE FROM helloworld WHERE id = :id';
+		$sql = 'DELETE FROM backrooms WHERE id = :id';
 		$stmt = $this->Database->prepare($sql);
 		$stmt->bindParam(':id', $id, \PDO::PARAM_INT);
 		$stmt->execute();
@@ -243,27 +243,28 @@ class Backrooms extends FreePBX_Helpers implements BMO
 	 */
 	public function doDialplanHook(&$ext, $engine, $priority)
 	{
-		$modulename = 'helloworld';
+		$modulename = 'backrooms';
 
 		// Retrieve module's feature code
-		$fcc = new \featurecode($modulename, 'helloworld');
+		$fcc = new \featurecode($modulename, 'backrooms');
 		$hw_fc = $fcc->getCodeActive();
 		unset($fcc);
 
-		$id = 'app-helloworld';
+		$id = 'app-backrooms';
 		$ext->addInclude('from-internal-additional', $id); // Add the include to from-internal
 		$ext->add(
 			$id,
 			$hw_fc,
 			'',
-			new \ext_goto('1', 's', 'app-helloworld-playback')
+			new \ext_goto('1', 's', 'app-backrooms-playback')
 		); // feature code goes to playback context
 
-		$id = 'app-helloworld-playback';
+		$id = 'app-backrooms-playback';
 		$c = 's';
 		$ext->add($id, $c, 'label', new \ext_answer());
 		$ext->add($id, $c, '', new \ext_wait(1));
-		$ext->add($id, $c, '', new \ext_playback('hello-world'));
+		//THIS change underneath me might break something... 
+		$ext->add($id, $c, '', new \ext_playback('backrooms'));
 		$ext->add($id, $c, '', new \ext_playback('demo-congrats'));
 		$ext->add($id, $c, 'hangup', new \ext_hangup());
 	}
