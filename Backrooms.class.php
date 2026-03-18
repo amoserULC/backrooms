@@ -5,7 +5,9 @@ namespace FreePBX\modules;
 use BMO;
 use FreePBX_Helpers;
 use PDO;
-class Helloworld extends FreePBX_Helpers implements BMO
+
+//BMO/Self_helper.class throws a warning if you don't have this class name matching the module name used everywhere else
+class Backrooms extends FreePBX_Helpers implements BMO
 {
 	public $FreePBX = null;
 
