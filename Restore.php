@@ -1,5 +1,5 @@
 <?php
-namespace FreePBX\modules\Helloworld;
+namespace FreePBX\modules\backrooms;
 use FreePBX\modules\Backup as Base;
 class Restore Extends Base\RestoreBase{
 	public function runRestore($jobid){
@@ -9,7 +9,7 @@ class Restore Extends Base\RestoreBase{
 		}
 	}
 	public function processLegacy($pdo, $data, $tables, $unknownTables, $tmpfiledir){
-		return $this->transformLegacyKV($pdo,'helloworld', $this->freepbx)
-				->transformNamespacedKV($pdo,'helloworld', $this->freepbx);
+		return $this->transformLegacyKV($pdo,'backrooms', $this->freepbx)
+				->transformNamespacedKV($pdo,'backrooms', $this->freepbx);
 	}
 }
