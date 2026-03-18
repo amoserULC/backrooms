@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 //Start class. Class name should be same as file name. Classname.class.php
-class Helloworld extends Command
+class Backrooms extends Command
 {
 	//Declare component and your options.
 	protected function configure()
 	{
-		$this->setName('helloworld')
-			->setDescription('This says hello to the world')
+		$this->setName('backrooms')
+			->setDescription('This says backrooms to the world')
 			->setDefinition(array(
 				new InputOption(
 					'flag',
