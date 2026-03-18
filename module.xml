@@ -1,31 +1,30 @@
 <module>
-	<rawname>helloworld</rawname>
+	<rawname>backrooms</rawname>
 	<repo>unsupported</repo>
-	<name>Hello World</name>
-	<version>15.0.1</version>
+	<name>Backrooms</name>
+	<version>0.0.1</version>
 	<category>Development</category>
-	<Publisher>James Finstrom</Publisher>
-	<info>http://wiki.freepbx.org/pages/viewpage.action?pageId=19498386</info>
-	<licence>GPL</licence>
-	<licenselink>http://www.gnu.org/licenses/gpl-2.0.txt</licenselink>
+	<Publisher>Andrew Moser</Publisher>
+	<info>This is the test version of what is intended to be a new EPM</info>
+	<licence>Private</licence>
+	<licenselink></licenselink>
 	<database>
-        	<table name="helloworld">
+        	<table name="backrooms">
             		<field name="id" type="integer" primarykey="true" autoincrement="true"/>
             		<field name="subject" type="string" length="150" notnull="false"/>
             		<field name="body" type="string" length="255" notnull="false"/>
         	</table>
     	</database>
 	<menuitems>
-		<helloworld>Hello World</helloworld>
+		<backrooms>Backrooms</backrooms>
 	</menuitems>
 	<depends>
 		<version>14</version>
 	</depends>
 	<supported>14.0</supported>
 	
-	<description>This is the Hello World module used to learn by example for BMO used in 12+</description>
+	<description>This is the test version of what is intended to be a new EPM</description>
 	<changelog>
-		*14.0.1* Code cleanup and some php 5.6 syntax
-		*12.0.0.1* Initial Dev Release
+		*0.0.1 - Forked from "Hello World" template by jfinstrom
 	</changelog>
 </module>
