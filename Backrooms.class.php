@@ -1,6 +1,6 @@
 <?php
 
-namespace FreePBX\modules;
+namespace FreePBX\modules\backrooms;
 
 use BMO;
 use FreePBX_Helpers;
