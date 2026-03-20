@@ -171,7 +171,7 @@ class Backrooms extends FreePBX_Helpers implements BMO
 		array_walk($data, function (&$value, $key) {
 			$value = ['id' => $key, 'subject' => $value];
 		});
-		return $data;
+		return array_values($data);
 	}
 	//Module setters these are all custom methods.
 
