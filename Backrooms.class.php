@@ -171,6 +171,7 @@ class Backrooms extends FreePBX_Helpers implements BMO
 		array_walk($data, function (&$value, $key) {
 			$value = ['id' => $key, 'subject' => $value];
 		});
+		//Changed this to use array values to make sure JSONencode in ajax handler is given an array, not an object
 		return array_values($data);
 	}
 	//Module setters these are all custom methods.
